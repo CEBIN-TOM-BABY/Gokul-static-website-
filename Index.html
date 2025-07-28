@@ -1,1 +1,790 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gokul M - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4; 
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #0ea5e9;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            background: 
+                linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)),
+                url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1920&q=80') 
+                no-repeat center center;
+            background-size: cover;
+        }
+
+        .hero-content {
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            background: transparent; 
+        }
+
+        #about .container,
+        #experience .container,
+        #projects .container,
+        #contact .container .contact-content,
+        .skills-grid {
+             background: white;
+             padding: 4rem 2rem;
+             border-radius: 15px;
+             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        #contact .container {
+             background: transparent;
+             padding: 0 20px;
+             box-shadow: none;
+       }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            margin: 0 auto;
+            /* === IMAGE HAS BEEN UPDATED HERE === */
+            background-image: url('http://googleusercontent.com/file_content/0');
+            background-size: cover;
+            background-position: center;
+            background-color: #a5b4fc; /* Fallback color */
+            border: 5px solid white;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Experience Section */
+        #experience {
+            background: #f8f9fa;
+        }
+
+        .experience-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            border-left: 3px solid #0ea5e9;
+        }
+
+        .experience-item {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .experience-item::before {
+             content: '';
+             position: absolute;
+             top: 20px;
+             left: -43px;
+             width: 15px;
+             height: 15px;
+             background: #6366f1;
+             border: 3px solid white;
+             border-radius: 50%;
+             z-index: 1;
+        }
+
+        .experience-item h3 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+        
+        .experience-item h4 {
+            font-size: 1.1rem;
+            color: #0ea5e9;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .experience-date {
+            display: block;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: #ffffff;
+        }
+
+        .skills-grid {
+             padding: 2rem;
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+             gap: 2rem;
+        }
+
+        .skill-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 1rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, #7dd3fc, #a5b4fc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .project-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.4);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #f8f9fa;
+        }
+        
+        #contact .container .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 1rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0ea5e9;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #1e293b; /* Dark Slate Blue */
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .profile-image {
+                width: 200px;
+                height: 200px;
+                margin-bottom: 2rem;
+            }
+
+            #contact .container .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            #about .container,
+            #experience .container,
+            #projects .container,
+            #contact .container .contact-content,
+            .skills-grid {
+                 padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Gokul M</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Hello, I'm Gokul M</h1>
+                <p>Biomedical Engineer</p>
+                <a href="#about" class="cta-button">Explore My Work</a>
+            </div>
+        </section>
+
+        <section id="about">
+             <div class="container">
+                 <h2 class="section-title fade-in">About Me</h2>
+                 <div class="about-content fade-in">
+                     <div class="profile-image"></div>
+                     <div class="about-text">
+                         <h3>Advancing Healthcare Through Technology</h3>
+                         <p>As a passionate Biomedical Engineer, I specialize in the maintenance, calibration, and management of advanced medical equipment. My mission is to ensure that healthcare providers have reliable and accurate tools to deliver the best possible patient care.</p>
+                         <p>With hands-on experience in fast-paced clinical environments, I am adept at troubleshooting and resolving complex technical issues for a wide range of diagnostic and therapeutic devices. I serve as a critical link between medical technology and its clinical application.</p>
+                         <p>I am driven by a commitment to quality and safety, adhering strictly to regulatory standards. My goal is to leverage my technical skills to improve healthcare outcomes and support the vital work of medical professionals.</p>
+                     </div>
+                 </div>
+             </div>
+        </section>
+
+        <section id="experience">
+            <div class="container">
+                <h2 class="section-title fade-in">Work Experience</h2>
+                <div class="experience-timeline fade-in">
+                    <div class="experience-item">
+                        <h3>Biomedical Engineer</h3>
+                        <h4>City Hospital</h4>
+                        <span class="experience-date">June 2022 - Present</span>
+                        <p>Manage the lifecycle of critical medical equipment, including installation, preventative maintenance, and repair. Ensure compliance with NABH standards and provide technical training to clinical staff.</p>
+                    </div>
+                    <div class="experience-item">
+                        <h3>Biomedical Intern</h3>
+                        <h4>Med-Tech Solutions</h4>
+                        <span class="experience-date">August 2021 - May 2022</span>
+                        <p>Assisted senior engineers in servicing diagnostic imaging equipment. Responsible for maintaining service logs and managing spare parts inventory.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2 class="section-title fade-in">My Skills</h2>
+                <div class="skills-grid fade-in">
+                    <div class="skill-card">
+                        <div class="skill-icon">🛠️</div>
+                        <h3>Device Maintenance</h3>
+                        <p>Installation, calibration, preventative maintenance, and troubleshooting of complex medical devices.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🩺</div>
+                        <h3>Diagnostic Equipment</h3>
+                        <p>In-depth knowledge of imaging systems (X-Ray, CT), patient monitors, and laboratory analyzers.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">📋</div>
+                        <h3>Quality & Compliance</h3>
+                        <p>Adhering to service protocols and documenting work meticulously to meet regulatory standards like NABH & JCI.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🤝</div>
+                        <h3>Technical Support</h3>
+                        <p>Providing clear technical support to clinicians and training staff on proper equipment operation and care.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+             <div class="container">
+                 <h2 class="section-title fade-in">Key Accomplishments</h2>
+                 <div class="projects-grid fade-in">
+                    <div class="project-card">
+                         <div class="project-image">📈</div>
+                         <div class="project-content">
+                             <h3>Reduced Equipment Downtime</h3>
+                             <p>Implemented a new preventative maintenance schedule for the ICU, resulting in a 20% reduction in critical equipment downtime.</p>
+                             <a href="#" class="project-link">View Details</a>
+                         </div>
+                     </div>
+                     <div class="project-card">
+                         <div class="project-image">🛡️</div>
+                         <div class="project-content">
+                             <h3>Quality Audit Success</h3>
+                             <p>Successfully prepared the biomedical department for a JCI audit, leading to full compliance with zero non-conformities in equipment management.</p>
+                             <a href="#" class="project-link">View Details</a>
+                         </div>
+                     </div>
+                     <div class="project-card">
+                         <div class="project-image">💡</div>
+                         <div class="project-content">
+                             <h3>New Ventilator Rollout</h3>
+                             <p>Managed the successful installation and training for 30 new mechanical ventilators, ensuring a smooth transition for the respiratory therapy department.</p>
+                             <a href="#" class="project-link">View Details</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title fade-in">Get In Touch</h2>
+                <div class="contact-content fade-in">
+                    <div class="contact-info">
+                        <h3>Let's Connect</h3>
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <strong>Email</strong><br>
+                                your-email@example.com
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📱</div>
+                            <div>
+                                <strong>Phone</strong><br>
+                                +91 98765 43210
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <strong>Location</strong><br>
+                                Kochi, Kerala, India
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">💼</div>
+                            <div>
+                                <strong>LinkedIn</strong><br>
+                                linkedin.com/in/your-profile
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Gokul M. All rights reserved. Improving healthcare with technology.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations (fade-in effect)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Form submission handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            // Simple validation
+            if (name && email && subject && message) {
+                // This is a placeholder alert. The form does not actually send an email.
+                alert('Thank you for your message! (Note: This form is a demo and does not send emails yet.)');
+                form.reset();
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+    </script>
+</body>
+</html>
